@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;
+500;
+600;
+700&family=Manrope:wght@400;
+500;
+600;
+700;
+800&display=swap');
+:root{
+color-scheme:dark;
+--bg:#101515;
+--panel:#171e1e;
+--line:#2b3533;
+--muted:#9aa8a3;
+--accent:#c8ef92;
+--text:#edf1e9;
+font-family:'DM Sans',sans-serif;
+background:var(--bg);
+color:var(--text)}
+
+*{
+box-sizing:border-box}
+
+body{
+margin:0}
+
+button,a{
+-webkit-tap-highlight-color:transparent}
+
+button{
+font:inherit;
+cursor:pointer}
+
+button:disabled{
+cursor:not-allowed}
+
+button:focus-visible,a:focus-visible{
+outline:3px solid var(--accent);
+outline-offset:4px}
+
+a{
+color:inherit;
+text-decoration:none}
+
+.site-header,main,footer{
+max-width:1440px;
+margin:auto}
+
+.site-header{
+height:100px;
+padding:0 56px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid var(--line)}
+
+.brand{
+font:800 36px Manrope,sans-serif;
+letter-spacing:-2px}
+
+.brand span{
+display:block;
+font:10px 'DM Sans',sans-serif;
+letter-spacing:5px;
+margin-top:-3px}
+
+.header-note{
+font-size:13px;
+color:var(--muted)}
+
+.step{
+font-size:12px;
+color:var(--accent);
+letter-spacing:1px}
+
+.step span{
+color:var(--muted);
+margin-left:8px}
+
+main{
+padding:46px 56px 20px}
+
+.film{
+display:flex;
+justify-content:space-between;
+gap:24px;
+align-items:center;
+margin-bottom:42px}
+
+.eyebrow{
+font-size:10px;
+font-weight:700;
+letter-spacing:2px;
+color:var(--accent);
+margin:0 0 12px}
+
+h1,h2,p{
+margin-top:0}
+
+h1{
+font:500 clamp(32px,3.7vw,50px) Manrope,sans-serif;
+letter-spacing:-2px;
+margin-bottom:12px}
+
+.film-description{
+color:var(--muted);
+font-size:13px}
+
+.film-meta{
+display:flex;
+gap:16px;
+align-items:center;
+font-size:11px;
+color:var(--muted)}
+
+.film-meta span:first-child{
+color:var(--text);
+font-weight:700;
+letter-spacing:1px}
+
+.showtime{
+display:flex;
+flex-direction:column;
+gap:12px;
+border-left:1px solid var(--line);
+padding-left:28px;
+min-width:240px}
+
+.showtime .eyebrow{
+margin:0}
+
+.showtime strong{
+font-size:16px;
+font-weight:500}
+
+.showtime>span:last-child{
+color:var(--muted);
+font-size:12px}
+
+i{
+font-style:normal}
+
+.showtime i{
+margin:0 9px}
+
+.booking-layout{
+display:grid;
+grid-template-columns:minmax(0,1fr) 300px;
+gap:22px}
+
+.map-panel,.details,.cart{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:16px}
+
+.map-panel{
+padding:26px 24px 20px;
+overflow:hidden}
+
+.panel-heading{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px}
+
+h2{
+font:500 21px Manrope,sans-serif;
+letter-spacing:-.5px;
+margin-bottom:18px}
+
+.seat-count{
+font-size:10px;
+color:var(--muted)}
+
+.sidebar{
+display:flex;
+flex-direction:column;
+gap:20px}
+
+.details,.cart{
+padding:24px}
+
+.muted,.empty-cart{
+color:var(--muted);
+font-size:13px;
+line-height:1.7}
+
+.cart-heading{
+display:flex;
+align-items:baseline;
+justify-content:space-between;
+gap:8px}
+
+.cart-heading span{
+font-size:11px;
+color:var(--muted)}
+
+#cart-items{
+list-style:none;
+padding:0;
+margin:0 0 20px}
+
+.total{
+border-top:1px solid var(--line);
+padding-top:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:13px}
+
+.total strong{
+font:600 25px Manrope,sans-serif;
+color:var(--accent)}
+
+.cart-note{
+font-size:10px;
+color:var(--muted);
+text-align:center;
+margin:18px 0 0}
+
+.status{
+min-height:22px;
+font-size:12px;
+color:var(--accent);
+padding-top:14px}
+
+footer{
+padding:22px 56px 32px;
+display:flex;
+justify-content:space-between;
+color:var(--muted);
+font-size:10px;
+letter-spacing:1px;
+border-top:1px solid var(--line)}
+
+
