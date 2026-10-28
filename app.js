@@ -69,3 +69,28 @@ function renderVenue() {
   }
 }
 renderVenue();
+
+function renderDetails() {
+  const seat = findSeat(booking.inspectedId);
+  if (!seat) return;
+  details.replaceChildren();
+  const name = document.createElement('p');
+  name.className = 'selected-seat';
+  name.textContent = `Row ${seat.row} · Seat ${seat.number}`;
+  const info = document.createElement('p');
+  info.className = 'muted';
+  info.textContent = `${seat.zoneName} · Hall 01 · ${money(seat.price)}`;
+  const add = document.createElement('button');
+  add.type = 'button';
+  add.id = 'add-ticket';
+  add.className = 'add-ticket';
+  add.textContent = 'ADD TO CART';
+  details.append(name, info, add);
+}
+seatRoot.addEventListener('click', event => {
+  const button = event.target.closest('[data-seat]');
+  if (!button) return;
+  booking.inspectedId = button.dataset.seat;
+  renderDetails();
+  status.textContent = `Inspecting ${booking.inspectedId}. Use Add to Cart to select this ticket.`;
+});
