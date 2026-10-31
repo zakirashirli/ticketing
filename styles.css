@@ -355,4 +355,22 @@ background:#dbffae}
 background:#354039;
 color:#a3aea5}
 
+.seat.unavailable,.swatch.unavailable{
+background:repeating-linear-gradient(45deg,#202726,#202726 3px,#35403b 3px,#35403b 4px);
+border-color:#424b46;
+color:#67736b}
+
+.seat.in-cart,.swatch.in-cart{
+background:var(--accent);
+border-color:var(--accent);
+color:#182016}
+
+.seat.inspected,.swatch.inspected{
+outline:2px solid #faf8e9;
+outline-offset:2px}
+
+.seat:focus-visible{
+outline:3px solid #fff;
+outline-offset:3px}
+
 
