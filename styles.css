@@ -373,4 +373,29 @@ outline-offset:2px}
 outline:3px solid #fff;
 outline-offset:3px}
 
+.navigation{
+display:flex;
+justify-content:center;
+gap:6px;
+align-items:center;
+margin:10px 0 20px}
+
+.navigation button{
+width:34px;
+height:34px;
+border-radius:7px;
+border:1px solid #3b4941;
+background:#202b25;
+color:var(--text);
+font-size:17px}
+
+.navigation button:hover{
+background:#3b4a3d}
+
+.navigation output{
+font-size:10px;
+min-width:40px;
+text-align:center;
+color:var(--muted)}
+
 
