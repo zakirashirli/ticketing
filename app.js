@@ -25,6 +25,22 @@ function findSeat(id) {
 const money = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'AZN', currencyDisplay: 'narrowSymbol' }).format(value);
 
 
+// 2. JSON browser storage
+const STORAGE_KEY = 'lumen:hall01:2026-11-08:1930:v1';
+function validateCart(value) {
+  if (!value || !Array.isArray(value.seatIds)) return [];
+  return value.seatIds.filter((id, index, ids) =>
+    typeof id === 'string' && findSeat(id)?.available && ids.indexOf(id) === index);
+}
+function loadCart(storage) {
+  try { return validateCart(JSON.parse(storage.getItem(STORAGE_KEY) || '{"seatIds":[]}')); }
+  catch { return []; }
+}
+function saveCart(storage, cart) {
+  try { storage.setItem(STORAGE_KEY, JSON.stringify({ seatIds: cart, updatedAt: new Date().toISOString() })); return true; }
+  catch { return false; }
+}
+
 // 3. Map navigation
 function setupNavigation() {
   const viewport = document.querySelector('#venue-container');
@@ -60,7 +76,10 @@ const seatRoot = document.querySelector('#seats');
 const details = document.querySelector('#seat-details');
 const status = document.querySelector('#status');
 const booking = { inspectedId: null, seatIds: [] };
-
+// Access can itself throw when storage is blocked by browser policy.
+let storage;
+try { storage = window.localStorage; } catch { /* Selection remains usable in memory. */ }
+booking.seatIds = loadCart(storage);
 
 
 function renderVenue() {
@@ -172,4 +191,8 @@ function renderCart() {
   document.querySelector('#cart-count').textContent = `${booking.seatIds.length} ticket${booking.seatIds.length === 1 ? '' : 's'}`;
   document.querySelector('#cart-total').textContent = money(total);
 }
-function updateBooking() { renderSeatStates(); renderCart(); renderDetails(); }
+function updateBooking() {
+  renderSeatStates(); renderCart(); renderDetails();
+  document.querySelector('#storage-warning').hidden = saveCart(storage, booking.seatIds);
+}
+renderCart();
