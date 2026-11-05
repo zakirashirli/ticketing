@@ -429,4 +429,144 @@ font-size:18px}
 color:white;
 border-color:white}
 
+@media(min-width:1500px){
+main{
+padding-top:60px}
+
+.film{
+margin-bottom:52px}
+
+}
+@media(max-width:1100px){
+main{
+padding:32px 24px 16px}
+
+.site-header{
+padding:0 24px}
+
+.booking-layout{
+grid-template-columns:minmax(0,1fr) 270px;
+gap:16px}
+
+.map-panel{
+padding:22px 12px}
+
+.details,.cart{
+padding:20px}
+
+.seat-count{
+display:none}
+
+footer{
+padding-left:24px;
+padding-right:24px}
+
+}
+@media(max-width:800px){
+.booking-layout{
+grid-template-columns:1fr}
+
+.sidebar{
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:start}
+
+.film{
+gap:20px}
+
+.showtime{
+min-width:195px;
+padding-left:20px}
+
+.header-note{
+display:none}
+
+.venue-container{
+height:535px}
+
+}
+@media(max-width:540px){
+.site-header{
+height:80px;
+padding:0 18px}
+
+.brand{
+font-size:30px}
+
+.step{
+font-size:9px}
+
+main{
+padding:28px 14px 12px}
+
+.film{
+display:block;
+margin-bottom:24px}
+
+h1{
+letter-spacing:-1px}
+
+.film-description{
+line-height:1.6}
+
+.film-meta{
+gap:9px;
+flex-wrap:wrap;
+font-size:10px}
+
+.showtime{
+border-left:0;
+border-top:1px solid var(--line);
+padding:18px 0 0;
+margin-top:22px;
+gap:9px}
+
+.showtime strong{
+font-size:14px}
+
+.sidebar{
+grid-template-columns:1fr}
+
+.venue-container{
+height:435px}
+
+.map-panel{
+padding:22px 10px 16px}
+
+.panel-heading{
+padding:0 8px}
+
+.legend{
+gap:10px}
+
+.legend span{
+font-size:8px}
+
+.navigation{
+gap:5px}
+
+.navigation button{
+width:35px;
+height:40px}
+
+footer{
+padding:20px 16px;
+gap:16px;
+flex-wrap:wrap;
+font-size:8px}
+
+footer span:nth-child(2){
+order:3;
+width:100%}
+
+.cart-item button{
+width:40px;
+height:40px}
+
+}
+@media(prefers-reduced-motion:reduce){
+*{
+transition:none!important}
+
+}
 
