@@ -569,4 +569,11 @@ height:40px}
 transition:none!important}
 
 }
+.venue-container{
+cursor:grab;
+user-select:none}
+
+.venue-container.dragging,.venue-container.dragging .seat{
+cursor:grabbing}
+
 

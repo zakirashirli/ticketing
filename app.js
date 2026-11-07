@@ -65,6 +65,36 @@ function setupNavigation() {
     button.addEventListener('click', action); nav.append(button);
   }
   const level = document.createElement('output'); level.id = 'zoom-level'; level.setAttribute('aria-label', 'Zoom level'); nav.append(level);
+  viewport.addEventListener('wheel', event => {
+    event.preventDefault(); zoom(event.deltaY < 0 ? .1 : -.1);
+  }, { passive: false });
+  let drag = null, suppressClick = false;
+  viewport.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || event.pointerType === 'touch') return;
+    drag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, x, y, moved: false };
+    suppressClick = false;
+  });
+  viewport.addEventListener('pointermove', event => {
+    if (!drag || drag.id !== event.pointerId) return;
+    const dx = event.clientX - drag.startX, dy = event.clientY - drag.startY;
+    if (Math.hypot(dx, dy) > 5) {
+      drag.moved = true; viewport.setPointerCapture(event.pointerId);
+      viewport.classList.add('dragging');
+      x = drag.x + dx; y = drag.y + dy; paint();
+    }
+  });
+  function endDrag(event) {
+    if (!drag || drag.id !== event.pointerId) return;
+    suppressClick = drag.moved;
+    if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+    drag = null; viewport.classList.remove('dragging');
+  }
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+  viewport.addEventListener('pointerleave', event => { if (drag && !drag.moved) endDrag(event); });
+  viewport.addEventListener('click', event => {
+    if (suppressClick) { event.stopPropagation(); event.preventDefault(); suppressClick = false; }
+  }, true);
   new ResizeObserver(paint).observe(viewport);
   paint();
 }
