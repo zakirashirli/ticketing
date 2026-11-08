@@ -181,7 +181,8 @@ seatRoot.addEventListener('click', event => {
   booking.inspectedId = button.dataset.seat;
   renderDetails();
   renderSeatStates();
-  status.textContent = `Inspecting ${booking.inspectedId}. Use Add to Cart to select this ticket.`;
+  const seat = findSeat(booking.inspectedId);
+  status.textContent = !seat.available ? `${booking.inspectedId} is unavailable. Please choose another seat.` : booking.seatIds.includes(booking.inspectedId) ? `${booking.inspectedId} is already in your cart.` : `Inspecting ${booking.inspectedId}. Use Add to Cart to select this ticket.`;
 });
 
 function renderSeatStates() {

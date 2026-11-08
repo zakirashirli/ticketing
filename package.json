@@ -1,0 +1,1 @@
+{"name":"lumen-course-ticketing","private":true,"scripts":{"start":"node server.mjs","test":"node --test tests/state.test.cjs"}}
